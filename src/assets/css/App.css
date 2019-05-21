@@ -27,6 +27,17 @@ a{
   text-decoration: none;
   color:#fff;
 }
+.login-out{
+  position: absolute;
+  top:0;
+  right:0;
+  padding:0 20px;
+  background: rgb(240, 87, 27);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
 
 
 

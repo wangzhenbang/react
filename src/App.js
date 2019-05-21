@@ -1,42 +1,34 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link,withRouter } from "react-router-dom";
+import {  Route, Link,withRouter } from "react-router-dom";
+
+import { getInputChangeAction,getAddItemAction} from './store/actionCreators' //定义类型的文件引用
+
+import { connect } from 'react-redux' //连接的作用
 
 
+import './assets/css/index.css';
 import './assets/css/App.css'; 
 import routes from './router/route'
 import { Layout, Menu, Icon } from 'antd';
-
-const { Header, Sider, Content } = Layout;
-const { SubMenu }=Menu;
-const  menulist=[
-  {
-    url:'/',
-    name:'首页',
-    iconType:'home'
-  },
-  {
-    url:'/user',
-    name:'用户列表',
-    iconType:'user'
-  },
-  {
-    url:'/orderList',
-    name:'订单列表',
-    iconType:'ordered-list'
-  },
-]
  
-const LeftSider = withRouter(({history}) => {
+const { Header, Sider, Content } = Layout;
+// const { SubMenu }=Menu;
+let menulist=[
+
+  
+];
+
+const LeftSider = withRouter((props) => {
   return (    
           <Menu
               theme="dark"
               mode="inline"
-              defaultSelectedKeys={[history.location.pathname]}
+              defaultSelectedKeys={[props.history.location.pathname]}
              
           >
-          {               
+          {              
             menulist.map((item,key)=>{  
-              return (
+              return (  
                 <Menu.Item key={item.url}>
                   <Link to={item.url} >
                     <Icon type={item.iconType} />
@@ -49,15 +41,14 @@ const LeftSider = withRouter(({history}) => {
             }) 
           }
           </Menu>
-  
   );
   
 
   })
 class App extends Component {
-  
   constructor(props){
     super(props);
+    console.log(props);
     this.state={
       collapsed: false   
     }
@@ -67,31 +58,33 @@ class App extends Component {
       collapsed: !this.state.collapsed,
     });
   }
+  loginOut=()=>{
+    this.props.history.push('/login');
+  }
   render() {
-  
+    menulist=this.props.menulist;
     return (
-      <Router>
         <div className="app">
           <Layout>
             <Sider
               trigger={null}
               collapsible
-              collapsed={this.state.collapsed}
+              collapsed={this.state.collapsed}  
             >
               <div className="logo" />
               <LeftSider />     
             </Sider>
             <Layout>
-              <Header style={{ background: '#fff', padding: 0 }}>
+              <Header style={{ background: '#fff', padding: 0,position:'relative' }}>
                 <Icon
                   className="trigger"
                   type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                   onClick={this.toggle}
                 />
-                <div>{this.props.location}</div>
+                <div className="login-out" onClick={this.loginOut}>退出登录</div>
               </Header>
               <Content style={{
-                margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280,
+                margin: '24px 16px', padding: 24, background:'#fff', minHeight: 280,
               }}
               >
                 {
@@ -102,17 +95,34 @@ class App extends Component {
                       return <Route key={key} path={route.path} component={route.component} />
                     }
                   })
-                } 
-              
+                }      
               </Content>
             </Layout>
-          </Layout> 
-          
-            
+          </Layout>         
         </div>
-      </Router>
+  
     );
   }
 }
 
-export default App;
+
+
+//可以另外新建一个js文件 属于容器组件  
+const mapState=(state)=>{
+  return {
+    menulist:state.menulist
+  }
+}
+const mapdispatchAction=(dispatch)=>{
+  return {
+    changeInputValue(e){
+      const action=getInputChangeAction(e.target.value)
+      dispatch(action)
+    },
+    add(){
+      const action=getAddItemAction()
+      dispatch(action)
+    }
+  }
+}
+export default connect(mapState,mapdispatchAction)(App);//connect是连接 跟Provide配套使用

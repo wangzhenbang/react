@@ -3,16 +3,16 @@ import User from '../components/User'
 import OrderList from '../components/OrderList'
 let routes=[
     {
-       path:'/',
+       path:'/index/',
        component:Home,
        exact:true
     },
     {
-      path:'/user',
+      path:'/index/user',
       component:User
     },
     {
-      path:'/orderList',
+      path:'/index/orderList',
       component:OrderList
     }
   ]

@@ -1,0 +1,30 @@
+.bg{
+    width:100%;
+    height:100vh;
+    background: #041625;
+}
+.box-from{
+    width:350px;
+    height:300px;
+    background: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-175px;
+    margin-top:-250px;
+}
+.from-content{
+    position: relative;
+    top:30px;
+    left:25px;
+}
+.box-from .login-form {
+    max-width: 300px;
+  }
+.box-from .login-form-forgot {
+    float: right;
+  }
+  .box-from .login-form-button {
+    width: 100%;
+  }

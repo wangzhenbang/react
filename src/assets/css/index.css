@@ -9,4 +9,10 @@ html,body {
   -moz-osx-font-smoothing: grayscale;
   
 }
-
+.ant-layout{
+  min-height:100vh;
+  height:100%!important;  
+}
+.ant-layout-content{
+  height:auto !important;
+}
