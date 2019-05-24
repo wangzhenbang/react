@@ -12,10 +12,20 @@ const defaultState={
             iconType:'user'
           },
           {
-            url:'/index/orderList',
-            name:'订单列表',
-            iconType:'ordered-list'
+            url:'/index/chart',
+            name:'数据图表',
+            iconType:'bar-chart'
           },
+          {
+            url:'/index/progress',
+            name:'进度表',
+            iconType:'appstore'
+          },
+          {
+            url:'/index/upload',
+            name:'上传功能',
+            iconType:'upload'
+          }
           
     ]
 }

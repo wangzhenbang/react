@@ -12,7 +12,7 @@ class login extends Component {
         message.error('账号或者密码错误，请重新输入！');
     }
     handleSubmit = e => {
-        e.preventDefault();
+        e.preventDefault(); 
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 if(values.username=='admin'&&values.password=='admin'){
@@ -63,7 +63,7 @@ class login extends Component {
                                     登录 
                                 </Button>
                             </Form.Item>
-                        </Form>
+                        </Form> 
                     </div>
 
                 </div>  

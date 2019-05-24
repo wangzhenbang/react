@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactEcharts from 'echarts-for-react';
 import '../assets/css/index.css'
-class OrderList extends Component {
+class chart extends Component {
     constructor(props) {
         super(props);
         this.state = {  };
@@ -91,4 +91,4 @@ class OrderList extends Component {
     }
 }
 
-export default OrderList;
+export default chart;

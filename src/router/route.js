@@ -1,6 +1,8 @@
 import Home from '../components/Home'
 import User from '../components/User'
-import OrderList from '../components/OrderList'
+import chart from '../components/chart'
+import Progress from '../components/Progress'
+import Upload from '../components/upload'
 let routes=[
     {
        path:'/index/',
@@ -12,8 +14,16 @@ let routes=[
       component:User
     },
     {
-      path:'/index/orderList',
-      component:OrderList
+      path:'/index/chart',
+      component:chart
+    },
+    {
+      path:'/index/progress',
+      component:Progress
+    },
+    {
+      path:'/index/upload',
+      component:Upload
     }
   ]
   
